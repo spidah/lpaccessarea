@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   scope "/admin" do
-    resources :users
+    resources :users, except: :create
   end
+  post 'create_user' => 'users#create', as: :create_user
 
   get 'home/index'
 

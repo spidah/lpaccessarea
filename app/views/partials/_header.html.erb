@@ -20,7 +20,6 @@
         <p class="navbar-text">Logged in as: <%= current_user.name %>.</p>
         <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
       </ul>
-    <span class="icon-bar">Welcome, <%= current_user.name %>.</span>
     <% else %>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {class: "navbar-form navbar-right"}) do |f| %>
         <div class="form-group">

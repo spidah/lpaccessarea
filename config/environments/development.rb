@@ -2,6 +2,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   
   config.web_console.whitelisted_ips = %w(66.249.93.252 31.221.72.106)
+  config.web_console.whiny_requests = false
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development

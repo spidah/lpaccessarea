@@ -7,14 +7,14 @@
       <%= devise_error_messages! %>
       
       <div class="form-group">
-        <label class="col-sm-2 control-label" for="user_login">Username</label>
+        <label class="col-sm-2 control-label">Username</label>
         <div class="col-sm-6">
           <%= f.text_field :login, autofocus: true, class: "form-control" %>
         </div>
       </div>
       
       <div class="form-group">
-        <label class="col-sm-2 control-label" for="user_login">Full name</label>
+        <label class="col-sm-2 control-label">Full name</label>
         <div class="col-sm-6">
           <%= f.text_field :name, autofocus: true, class: "form-control" %>
         </div>
@@ -36,7 +36,7 @@
     
       <div class="form-group">
           <%= f.submit "Create user", class: "btn btn-success" %>
-        </div>
+      </div>
     <% end %>
   </div>
 </div>

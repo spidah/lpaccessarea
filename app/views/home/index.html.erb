@@ -1,4 +1,32 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="container-full">
+    <div class="row">
+        <div class="col-lg-12 text-center v-center">
+            <h1>Welcome</h1>
+            <p class="lead">Please sign in</p>
+            <br>
+            <div class="input-group input-group-lg col-sm-offset-4 col-sm-4">
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {}) do |f| %>
+                <div class="form-group">
+                    <%= f.text_field :login, autofocus: true, class: "form-control login-control", placeholder: "Username" %>
+                </div>
+                
+                <div class="form-group">
+                    <%= f.password_field :password, autocomplete: "off", class: "form-control login-control", placeholder: "Password" %>
+                </div>
+                
+                <div class="form-group">
+                    <%= f.submit "Log in", class: "btn btn-success login-control" %>
+                </div>
+            <% end %>
+            </div>
+        </div>
+    </div> <!-- /row -->
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="row">
+        <div class="col-lg-12">
+          <p class="pull-right">©Copyright 2015 Interact. Designed and coded by David Hayward.</p>
+        </div>
+    </div>
 
-<a class="btn btn-primary" href="#">Test Button</a>
+  	<br><br><br><br><br>
+</div> <!-- /container full -->

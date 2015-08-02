@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  scope "/admin" do
-    resources :users, except: :create
+  namespace :admin do
+    resources :users
   end
-  post 'create_user' => 'users#create', as: :create_user
+  post 'create_user' => 'admin/users#create', as: :create_user
   
   resources :profile
 

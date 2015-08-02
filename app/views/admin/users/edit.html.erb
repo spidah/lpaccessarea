@@ -1,11 +1,22 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Create a new user</h3>
+    <h3 class="panel-title">Update User Details</h3>
   </div>
   <div class="panel-body">
-    <%= form_for(resource, as: resource_name, url: create_user_path, html: {class: "form-horizontal col-md-8"}) do |f| %>
-      <%= devise_error_messages! %>
-      
+
+    <%= form_for([:admin, @user], html: {class: "form-horizontal col-md-8"}) do |f| %>
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+    
+          <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+    
       <div class="form-group">
         <label class="col-sm-2 control-label">Username</label>
         <div class="col-sm-6">
@@ -23,23 +34,29 @@
       <div class="form-group">
         <%= f.label :password, class: "col-sm-2 control-label" %>
         <div class="col-sm-6">
+<% if @user.id == current_user.id -%>
+          <p class="form-control-static"><%= link_to "Click here to change your password", edit_user_registration_path %></p>
+<% else -%>
           <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+<% end -%>
         </div>
       </div>
 
       <div class="form-group">
         <%= f.label :role, class: "col-sm-2 control-label" %>
         <div class="col-sm-6">
+<% if @user.id == current_user.id -%>
+          <p class="form-control-static">You cannot edit your own role. Please ask another admin to do this for you.</p>
+<% else -%>
           <%= collection_select(:user, :role_id, Role.all, :id, :name, {prompt: true}, class: "form-control")  %>
+<% end -%>
         </div>
       </div>
     
       <div class="form-group">
-          <%= f.submit "Create user", class: "btn btn-success" %>
+          <%= f.submit "Update user", class: "btn btn-primary" %>
+          <%= link_to "Cancel", admin_users_path, class: "btn btn-warning" %>
       </div>
     <% end %>
   </div>
 </div>
-
-
-

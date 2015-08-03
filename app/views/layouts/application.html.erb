@@ -10,14 +10,14 @@
 <% unless params[:controller] == "home" -%>
   <%= render "partials/header" %>
   <div class="container">
-<% if notice -%>
+<% if !notice.blank? -%>
   <div class="panel panel-success">
     <div class="panel-heading">
         <h3 class="panel-title"><%= notice %></h3>
     </div>
   </div>
 <% end -%>
-<% if alert -%>
+<% if !alert.blank? -%>
   <div class="panel panel-danger">
     <div class="panel-heading">
         <h3 class="panel-title"><%= alert %></h3>

@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   end
   post 'create_user' => 'admin/users#create', as: :create_user
   
-  resources :profile, :timesheet
+  resources :profile
+  
+  get 'timesheet' => 'timesheet#index'
+  get 'timesheet/previous' => 'timesheet#previous'
 
   get 'home/index'
 

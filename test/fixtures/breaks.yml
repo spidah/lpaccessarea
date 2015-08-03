@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  for_date: 2015-08-03
+  start_time: 2015-08-03 14:36:58
+  finish_time: 2015-08-03 14:36:58
+  duration: 1
+  timesheet_id: 
+
+two:
+  for_date: 2015-08-03
+  start_time: 2015-08-03 14:36:58
+  finish_time: 2015-08-03 14:36:58
+  duration: 1
+  timesheet_id: 

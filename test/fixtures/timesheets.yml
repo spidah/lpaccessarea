@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  for_date: 2015-08-03
+  start_time: 2015-08-03 14:31:11
+  finish_time: 2015-08-03 14:31:11
+  approved_start: 2015-08-03 14:31:11
+  approved_finish: 2015-08-03 14:31:11
+  approved_break: 2015-08-03 14:31:11
+  approved_lunch: 2015-08-03 14:31:11
+  breaks_id: 
+  lunches_id: 
+
+two:
+  for_date: 2015-08-03
+  start_time: 2015-08-03 14:31:11
+  finish_time: 2015-08-03 14:31:11
+  approved_start: 2015-08-03 14:31:11
+  approved_finish: 2015-08-03 14:31:11
+  approved_break: 2015-08-03 14:31:11
+  approved_lunch: 2015-08-03 14:31:11
+  breaks_id: 
+  lunches_id: 

@@ -4,8 +4,6 @@
             <h1>Welcome</h1>
             <p class="lead">Please sign in</p>
             <br>
-            <p class="lead"><%= devise_error_messages! %></p>
-            <br>
             <div class="input-group input-group-lg col-sm-offset-4 col-sm-4">
             <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {}) do |f| %>
                 <div class="form-group">

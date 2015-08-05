@@ -1,0 +1,29 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Your start time for <%= text_date(@timesheet.for_date) %></h3>
+	</div>
+
+	<div class="panel-body">
+		<p>If you need to edit your start time (if you forgot to login when you started work, or you logged in some time before you started) then you can edit the hour and minutes below (seconds do not matter).</p>
+		<div class="form-horizontal col-md-8">
+			<%= form_for(@timesheet, html: {class: "form-horizontal col-md-8"}) do |f| %>
+				<div class="form-group">
+					<div class="col-sm-8">
+						<p>Current start time: <%= format_time(@timesheet.start_time) %></p>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-4">
+						<label class="control-label">New start time</label>
+				        <%= f.time_field :start_time, value: @timesheet.start_time.strftime("%H:%M"), autofocus: true, class: "form-control" %>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<%= f.submit "Update", class: "btn btn-primary" %>
+					<%= link_to "Cancel", timesheet_index_path, class: "btn btn-warning" %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

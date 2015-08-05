@@ -9,7 +9,11 @@ class ApplicationController < ActionController::Base
 
   def auth_user
 	if params[:controller] != "home" && params[:controller] != "devise/sessions"
-	  redirect_to root_path if !user_signed_in?
+		if !user_signed_in?
+	  		redirect_to root_path
+	  	else
+	  		redirect_to break_path(current_user.active_timesheet.latest_break) if current_user.active_timesheet.has_active_break?
+	  	end
 	end
   end
   
@@ -19,7 +23,7 @@ class ApplicationController < ActionController::Base
 	if resource.sign_in_count == 1
 	  edit_user_registration_path
 	else
-	  timesheet_path
+	  timesheet_index_path
 	end
   end
   

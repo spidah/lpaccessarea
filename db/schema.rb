@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150803133658) do
+ActiveRecord::Schema.define(version: 20150803201029) do
 
   create_table "breaks", force: :cascade do |t|
     t.date     "for_date"
@@ -41,9 +41,12 @@ ActiveRecord::Schema.define(version: 20150803133658) do
     t.time     "approved_finish"
     t.time     "approved_break"
     t.time     "approved_lunch"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "user_id",         limit: 4
   end
+
+  add_index "timesheets", ["user_id"], name: "index_timesheets_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                   limit: 255
@@ -69,5 +72,6 @@ ActiveRecord::Schema.define(version: 20150803133658) do
   add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
 
   add_foreign_key "breaks", "timesheets"
+  add_foreign_key "timesheets", "users"
   add_foreign_key "users", "roles"
 end

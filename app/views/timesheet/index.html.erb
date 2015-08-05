@@ -1,0 +1,93 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">My Timesheet</h3>
+	</div>
+
+	<div class="panel-body">
+ 		<p>This is your timesheet for <%= text_date(@timesheet.for_date) %>.</p>
+		<div class="form-horizontal col-md-8">
+			<div class="form-group">
+				<div class="col-sm-2">
+					Start time
+				</div>
+				<div class="col-sm-2">
+					<%= format_time(@timesheet.start_time) %>
+				</div>
+				<div class="col-sm-2">
+					<%= link_to('Edit Start Time', timesheet_starttime_path(@timesheet), class: "btn btn-info btn-xs") if @timesheet.finish_time == nil %>
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				<div class="col-sm-2">
+					Finish time
+				</div>
+				<div class="col-sm-2">
+					<%= @timesheet.finish_time ? format_time(@timesheet.finish_time) : "" %>
+				</div>
+				<div class="col-sm-2">
+<% if @timesheet.finish_time == nil -%>
+					<%= link_to('Finish Shift', timesheet_finishshift_path(@timesheet), data: { confirm: 'Are you sure you have finished your shift?' }, class: "btn btn-danger btn-xs")  %>
+<% else -%>
+					<%= link_to('Reopen Shift', timesheet_reopenshift_path(@timesheet), data: { confirm: 'Are you sure you have reopen your shift?' }, class: "btn btn-danger btn-xs")  %>
+<% end -%>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-2">
+					Breaks taken
+				</div>
+				<div class="col-sm-6">
+					<%= @breaks ? @breaks.length : "None" %>
+				</div>
+			</div>
+<% if @breaks -%>
+			<div class="form-group">
+				<div class="col-sm-2">
+					Break start
+				</div>
+				<div class="col-sm-2">
+					Break end
+				</div>
+				<div class="col-sm-2">
+					Duration
+				</div>
+			</div>
+<% @breaks.each do |b| %>
+			<div class="form-group">
+				<div class="col-sm-2">
+					<%= b.start_time %>
+				</div>
+				<div class="col-sm-2">
+					<%= b.finish_time %>
+				</div>
+				<div class="col-sm-2">
+					<%= b.duration %>
+				</div>
+			</div>
+<% end %>
+<% end -%>
+			<div class="form-group">
+				<div class="col-sm-2">
+					Lunches taken
+				</div>
+				<div class="col-sm-6">
+					<%= @lunches ? @lunches.length : "None" %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<% if current_user.has_previous_timesheets? -%>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Previous Timesheets</h3>
+	</div>
+	<div class="panel-body">
+		<p>You have <%= pluralize(current_user.timesheets.count(:all) - 1, "previous timesheet") %> on record.</p>
+		<p><%= link_to "Click here to view your previous timesheets", timesheet_previous_path %>.</p>
+	</div>
+</div>
+<% end -%>

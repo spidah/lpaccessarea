@@ -6,25 +6,27 @@
     <h3 class="panel-title">Listing Users</h3>
   </div>
 
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Role</th>
-        <th>Last logged in at</th>
-        <th>Delete</th>
-      </tr>
-    </thead>
-  
-    <tbody>
-      <% @users.each do |user| %>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
         <tr>
-          <td><%= link_to user.name, edit_admin_user_path(user) %></td>
-          <td><%= user.role.name %></td>
-          <td><%= user.last_sign_in_at %></td>
-          <td><%= link_to '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>'.html_safe, admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Last logged in at</th>
+          <th>Delete</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-
+      </thead>
+    
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= link_to user.name, edit_admin_user_path(user) %></td>
+            <td><%= user.role.name %></td>
+            <td><%= user.last_sign_in_at %></td>
+            <td><%= link_to '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>'.html_safe, admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

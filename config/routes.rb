@@ -8,8 +8,14 @@ Rails.application.routes.draw do
   
   resources :profile
   
-  get 'timesheet' => 'timesheet#index'
+  resources :timesheet
+  #get 'timesheet' => 'timesheet#index'
   get 'timesheet/previous' => 'timesheet#previous'
+  get 'timesheet/:id/starttime' => 'timesheet#starttime', as: :timesheet_starttime
+  get 'timesheet/:id/finishshift' => 'timesheet#finishshift', as: :timesheet_finishshift
+  get 'timesheet/:id/reopenshift' => 'timesheet#reopenshift', as: :timesheet_reopenshift
+  
+  resources :breaks
 
   get 'home/index'
 

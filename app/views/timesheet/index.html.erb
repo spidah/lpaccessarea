@@ -4,7 +4,7 @@
 	</div>
 
 	<div class="panel-body">
- 		<p>This is your timesheet for <%= text_date(@timesheet.for_date) %>.</p>
+ 		<p>This is your timesheet for <%= text_date(@timesheet.for_date) %> <%= format_time(DateTime.current) %>.</p>
 		<div class="form-horizontal col-md-8">
 			<div class="form-group">
 				<div class="col-sm-2">

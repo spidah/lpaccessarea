@@ -5,7 +5,8 @@ class TimesheetController < ApplicationController
 	load_and_authorize_resource
 	
 	def update
-		@timesheet.update!(starttime_params)
+		@timesheet.start_time = Time.parse(starttime_params[:start_time])
+		@timesheet.save!
 		redirect_to timesheet_index_path
 	end
 	
@@ -13,7 +14,7 @@ class TimesheetController < ApplicationController
 	end
 	
 	def finishshift
-		@timesheet.finish_time = DateTime.now
+		@timesheet.finish_time = DateTime.current
 		@timesheet.save
 		redirect_to timesheet_index_path
 	end

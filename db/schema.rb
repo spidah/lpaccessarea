@@ -35,10 +35,10 @@ ActiveRecord::Schema.define(version: 20150803201029) do
 
   create_table "timesheets", force: :cascade do |t|
     t.date     "for_date"
-    t.time     "start_time"
-    t.time     "finish_time"
-    t.time     "approved_start"
-    t.time     "approved_finish"
+    t.datetime "start_time"
+    t.datetime "finish_time"
+    t.datetime "approved_start"
+    t.datetime "approved_finish"
     t.time     "approved_break"
     t.time     "approved_lunch"
     t.datetime "created_at",                null: false
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20150803201029) do
   create_table "users", force: :cascade do |t|
     t.string   "name",                   limit: 255
     t.string   "email",                  limit: 255
+    t.string   "lp_name",                limit: 255
     t.integer  "role_id",                limit: 4
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false

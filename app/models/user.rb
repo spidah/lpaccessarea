@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
 			timesheet = Timesheet.new
 			timesheet.user_id = self.id
 			timesheet.for_date = Date.today
-			timesheet.start_time = self.current_sign_in_at.to_date == Date.today ? self.current_sign_in_at : DateTime.now
+			timesheet.start_time = self.current_sign_in_at.to_date == Date.today ? self.current_sign_in_at : DateTime.current
 			timesheet.save
 		end
 		

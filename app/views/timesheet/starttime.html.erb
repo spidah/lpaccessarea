@@ -15,7 +15,7 @@
 				<div class="form-group">
 					<div class="col-sm-4">
 						<label class="control-label">New start time</label>
-				        <%= f.time_field :start_time, value: @timesheet.start_time.strftime("%H:%M"), autofocus: true, class: "form-control" %>
+				        <%= f.time_field :start_time, value: get_time(@timesheet.start_time).strftime("%H:%M"), autofocus: true, class: "form-control" %>
 					</div>
 				</div>
 				

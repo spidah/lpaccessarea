@@ -30,9 +30,9 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-	devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:login, :email, :password, :password_confirmation, :name, :role_id) }
+	devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:login, :email, :lp_name, :password, :password_confirmation, :name, :role_id) }
 	devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :password) }
-	devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:login, :email, :password, :password_confirmation, :current_password, :name, :role_id, :changepassword) }
+	devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:login, :email, :lp_name, :password, :password_confirmation, :current_password, :name, :role_id, :changepassword) }
   end
   
   def authorize_admin

@@ -1,32 +1,36 @@
 <div class="panel panel-default">
-  <div class="panel-heading">
-    <span class="btn-group pull-right">
-      <%= link_to 'New User', new_admin_user_path, class: "btn btn-primary" %>
-    </span>
-    <h3 class="panel-title">Listing Users</h3>
-  </div>
-
-  <div class="panel-body">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Role</th>
-          <th>Last logged in at</th>
-          <th>Delete</th>
-        </tr>
-      </thead>
-    
-      <tbody>
-        <% @users.each do |user| %>
-          <tr>
-            <td><%= link_to user.name, edit_admin_user_path(user) %></td>
-            <td><%= user.role.name %></td>
-            <td><%= user.last_sign_in_at %></td>
-            <td><%= link_to '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>'.html_safe, admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+    <div class="panel-heading">
+        <span class="btn-group pull-right">
+            <%= link_to 'New User', new_admin_user_path, class: "btn btn-primary" %>
+        </span>
+        <h3 class="panel-title">Listing Users</h3>
+    </div>
+        
+    <div class="panel-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Liveperson Name</th>
+                    <th>Role</th>
+                    <th>Last logged in at</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+        
+            <tbody>
+<% @users.each do |user| -%>
+                <tr>
+                <td><%= link_to user.name, edit_admin_user_path(user) %></td>
+                <td><%= user.email %></td>
+                <td><%= user.lp_name %></td>
+                <td><%= user.role.name %></td>
+                <td><%= user.last_sign_in_at %></td>
+                <td><%= link_to '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>'.html_safe, admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+<% end -%>
+            </tbody>
+        </table>
+    </div>
 </div>

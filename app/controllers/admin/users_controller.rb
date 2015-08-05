@@ -42,6 +42,11 @@ class Admin::UsersController < AdminController
 	# PATCH/PUT /users/1
 	# PATCH/PUT /users/1.json
 	def update
+		if params[:user][:password].blank?
+			params[:user].delete("password")
+			params[:user].delete("password_confirmation")
+		end
+		
 		respond_to do |format|
 			if @user.update(user_params)
 				format.html { redirect_to admin_users_url, notice: 'User was successfully updated.' }
@@ -71,6 +76,6 @@ class Admin::UsersController < AdminController
 
 	# Never trust parameters from the scary internet, only allow the white list through.
 	def user_params
-		params.require(:user).permit(:login, :email, :password, :password_confirmation, :name, :role_id, :changepassword)
+		params.require(:user).permit(:login, :email, :lp_name, :password, :password_confirmation, :name, :role_id, :changepassword)
 	end
 end

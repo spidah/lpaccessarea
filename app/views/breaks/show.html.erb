@@ -1,0 +1,26 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">You are currently on <%= @break_type %></h3>
+	</div>
+
+	<div class="panel-body">
+		<div>
+			<p>You went on <%= @break_type %> this time at <%= format_time(@break.start_time) %>.</p>
+			<p>Your total <%= @break_type %> time for today is:</p>
+		</div>
+		<br/>
+		<div class="clock"></div>
+		<%= link_to('Finish ' + @break_type, break_finish_path(@break), :method => :post, class: "btn btn-danger btn-xs")  %>
+		<script type="text/javascript">
+			var clock;
+
+			$(document).ready(function() {
+
+				// Instantiate a counter
+				clock = new FlipClock($('.clock'), {autoStart: false});
+				clock.setTime(<%= @duration %>);
+				clock.start();
+			});
+		</script>
+	</div>
+</div>

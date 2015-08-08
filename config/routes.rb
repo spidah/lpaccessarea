@@ -14,8 +14,9 @@ Rails.application.routes.draw do
   get 'timesheet/:id/starttime' => 'timesheet#starttime', as: :timesheet_starttime
   get 'timesheet/:id/finishshift' => 'timesheet#finishshift', as: :timesheet_finishshift
   get 'timesheet/:id/reopenshift' => 'timesheet#reopenshift', as: :timesheet_reopenshift
-  
+
   resources :breaks
+  post 'breaks/:id/finish' => 'breaks#finish', as: :break_finish
 
   get 'home/index'
 

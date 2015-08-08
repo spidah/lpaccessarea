@@ -39,12 +39,17 @@
 				<div class="col-sm-2">
 					Breaks taken
 				</div>
-				<div class="col-sm-6">
-					<%= @breaks ? @breaks.length : "None" %>
+				<div class="col-sm-2">
+					<%= @breaks.count > 0 ? @breaks.count : "None" %>
+				</div>
+				<div class="col-sm-2">
+					<%= link_to('Take a Break', breaks_path(:break_type => "1"), :method => :post, class: "btn btn-warning btn-xs") if @timesheet.finish_time == nil %>
 				</div>
 			</div>
-<% if @breaks -%>
+<% if @breaks.count > 0 -%>
 			<div class="form-group">
+				<div class="col-sm-1">
+				</div>
 				<div class="col-sm-2">
 					Break start
 				</div>
@@ -57,14 +62,16 @@
 			</div>
 <% @breaks.each do |b| %>
 			<div class="form-group">
-				<div class="col-sm-2">
-					<%= b.start_time %>
+				<div class="col-sm-1">
 				</div>
 				<div class="col-sm-2">
-					<%= b.finish_time %>
+					<%= format_time_seconds(b.start_time) %>
 				</div>
 				<div class="col-sm-2">
-					<%= b.duration %>
+					<%= format_time_seconds(b.finish_time) %>
+				</div>
+				<div class="col-sm-2">
+					<%= format_time_duration(b.duration) %>
 				</div>
 			</div>
 <% end %>
@@ -73,10 +80,43 @@
 				<div class="col-sm-2">
 					Lunches taken
 				</div>
-				<div class="col-sm-6">
-					<%= @lunches ? @lunches.length : "None" %>
+				<div class="col-sm-2">
+					<%= @lunches.count > 0 ? @lunches.count : "None" %>
+				</div>
+				<div class="col-sm-2">
+					<%= link_to('Go on Lunch', breaks_path(:break_type => "2"), :method => :post, class: "btn btn-warning btn-xs") if @timesheet.finish_time == nil %>
 				</div>
 			</div>
+<% if @lunches.count > 0 -%>
+			<div class="form-group">
+				<div class="col-sm-1">
+				</div>
+				<div class="col-sm-2">
+					Lunch start
+				</div>
+				<div class="col-sm-2">
+					Lunch end
+				</div>
+				<div class="col-sm-2">
+					Duration
+				</div>
+			</div>
+<% @lunches.each do |b| %>
+			<div class="form-group">
+				<div class="col-sm-1">
+				</div>
+				<div class="col-sm-2">
+					<%= format_time_seconds(b.start_time) %>
+				</div>
+				<div class="col-sm-2">
+					<%= format_time_seconds(b.finish_time) %>
+				</div>
+				<div class="col-sm-2">
+					<%= format_time_duration(b.duration) %>
+				</div>
+			</div>
+<% end %>
+<% end -%>
 		</div>
 	</div>
 </div>

@@ -16,7 +16,15 @@ module ApplicationHelper
     end
 
 	def format_time(time)
-		get_time(time).strftime("%I:%M %P")
+		get_time(time).strftime("%I:%M %P") if time
+	end
+	
+	def format_time_seconds(time)
+		time.in_time_zone("London").strftime("%H:%M:%S") if time
+	end
+	
+	def format_time_duration(duration)
+		Time.at(duration).utc.strftime("%H:%M:%S")
 	end
 	
 	def text_date(date)

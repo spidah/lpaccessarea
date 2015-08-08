@@ -28,12 +28,12 @@ class TimesheetController < ApplicationController
 	protected
 	
 	def load_timesheet
-		@timesheet = Timesheet.find_by for_date: Date.today
+		@timesheet = current_user.timesheets.find_by for_date: Date.today
 	end
 	
 	def load_breaks
-		@breaks = @timesheet.breaks.find_by break_type: 1
-		@lunches = @timesheet.breaks.find_by break_type: 2
+		@breaks = @timesheet.breaks.where(["break_type=?", 1])
+		@lunches = @timesheet.breaks.where(["break_type=?", 2])
 	end
 
 	def starttime_params

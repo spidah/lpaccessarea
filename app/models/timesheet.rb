@@ -1,4 +1,5 @@
 class Timesheet < ActiveRecord::Base
+	belongs_to :user
 	has_many :breaks
 
 	def latest_break

@@ -15,8 +15,8 @@ ActiveRecord::Schema.define(version: 20150803201029) do
 
   create_table "breaks", force: :cascade do |t|
     t.date     "for_date"
-    t.time     "start_time"
-    t.time     "finish_time"
+    t.datetime "start_time"
+    t.datetime "finish_time"
     t.integer  "duration",     limit: 4
     t.integer  "break_type",   limit: 4
     t.integer  "timesheet_id", limit: 4

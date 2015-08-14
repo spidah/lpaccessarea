@@ -11,4 +11,8 @@ class Timesheet < ActiveRecord::Base
 		
 		abreak ? abreak.currently_active? : false
 	end
+	
+	def to_param
+		for_date.strftime("%Y-%m-%d")
+	end
 end

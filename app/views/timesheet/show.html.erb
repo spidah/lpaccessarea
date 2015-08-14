@@ -1,0 +1,106 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Timesheet for <%= text_date(@timesheet.for_date) %></h3>
+	</div>
+
+	<div class="panel-body">
+ 		<p>Total work time: <%= format_time_duration_in_words(@totaltime) %></p>
+		<div class="form-horizontal col-md-8">
+			<div class="form-group">
+				<div class="col-sm-2">
+					Start time
+				</div>
+				<div class="col-sm-4">
+					<%= format_time(@timesheet.start_time) %>
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				<div class="col-sm-2">
+					Finish time
+				</div>
+				<div class="col-sm-4">
+					<%= @timesheet.finish_time ? format_time(@timesheet.finish_time) : "" %>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-2">
+					Breaks taken
+				</div>
+				<div class="col-sm-4">
+					<%= @breaks.count > 0 ? "#{@breaks.count} (#{format_time_duration(@breaks.sum(:duration))} in total)" : "None" %>
+				</div>
+			</div>
+<% if @breaks.count > 0 -%>
+			<div class="form-group">
+				<div class="col-sm-1">
+				</div>
+				<div class="col-sm-2">
+					Break start
+				</div>
+				<div class="col-sm-2">
+					Break end
+				</div>
+				<div class="col-sm-2">
+					Duration
+				</div>
+			</div>
+<% @breaks.each do |b| %>
+			<div class="form-group">
+				<div class="col-sm-1">
+				</div>
+				<div class="col-sm-2">
+					<%= format_time_seconds(b.start_time) %>
+				</div>
+				<div class="col-sm-2">
+					<%= format_time_seconds(b.finish_time) %>
+				</div>
+				<div class="col-sm-2">
+					<%= format_time_duration(b.duration) %>
+				</div>
+			</div>
+<% end %>
+<% end -%>
+			<div class="form-group">
+				<div class="col-sm-2">
+					Lunches taken
+				</div>
+				<div class="col-sm-4">
+					<%= @lunches.count > 0 ? "#{@lunches.count} (#{format_time_duration(@lunches.sum(:duration))} in total)" : "None" %>
+				</div>
+			</div>
+<% if @lunches.count > 0 -%>
+			<div class="form-group">
+				<div class="col-sm-1">
+				</div>
+				<div class="col-sm-2">
+					Lunch start
+				</div>
+				<div class="col-sm-2">
+					Lunch end
+				</div>
+				<div class="col-sm-2">
+					Duration
+				</div>
+			</div>
+<% @lunches.each do |b| %>
+			<div class="form-group">
+				<div class="col-sm-1">
+				</div>
+				<div class="col-sm-2">
+					<%= format_time_seconds(b.start_time) %>
+				</div>
+				<div class="col-sm-2">
+					<%= format_time_seconds(b.finish_time) %>
+				</div>
+				<div class="col-sm-2">
+					<%= format_time_duration(b.duration) %>
+				</div>
+			</div>
+<% end %>
+<% end -%>
+		</div>
+	</div>
+</div>

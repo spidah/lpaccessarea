@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Here are your previous timesheets</h3>
+	</div>
+
+    <div class="panel-body">
+        <div class="form-horizontal col-md-8">
+<% @timesheets.each do |timesheet| -%>
+            <div class="form-group">
+				<div class="col-sm-4">
+				    <%= link_to text_date(timesheet.for_date), timesheet_show_path(timesheet) %>
+				</div>
+			</div>
+<% end -%>
+        <div class="pagination">
+            <%= will_paginate @timesheets, renderer: BootstrapPagination::Rails %>
+        </div>
+    </div>
+</div>

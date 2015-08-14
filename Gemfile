@@ -28,8 +28,8 @@ gem 'cancancan'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 
-gem 'will_paginate'
 gem 'will_paginate-bootstrap'
+gem 'will_paginate'
 gem 'time_diff'
 
 # Use ActiveModel has_secure_password

@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   
   resources :profile
   
+  get 'timesheet/previous' => 'timesheet#previous', as: :timesheet_previous
+  get 'timesheet/:date' => 'timesheet#show', as: :timesheet_show
   resources :timesheet
-  #get 'timesheet' => 'timesheet#index'
-  get 'timesheet/previous' => 'timesheet#previous'
   get 'timesheet/:id/starttime' => 'timesheet#starttime', as: :timesheet_starttime
   get 'timesheet/:id/finishshift' => 'timesheet#finishshift', as: :timesheet_finishshift
   get 'timesheet/:id/reopenshift' => 'timesheet#reopenshift', as: :timesheet_reopenshift

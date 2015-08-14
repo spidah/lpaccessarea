@@ -17,6 +17,14 @@ class User < ActiveRecord::Base
     timesheet = self.timesheets.find_by for_date: Date.today
     
     if timesheet == nil
+      previous_timesheet = self.timesheets.last
+      if previous_timesheet != nil
+        Rails.logger.debug previous_timesheet.id
+        previous_timesheet.finish_time = previous_timesheet.start_time.in_time_zone("London").end_of_day if previous_timesheet.finish_time == nil
+        previous_timesheet.save
+      end
+      
+      
 			timesheet = Timesheet.new
 			timesheet.user_id = self.id
 			timesheet.for_date = Date.today
